@@ -20,10 +20,14 @@ public abstract class Character : MonoBehaviour
     [SerializeField] protected float radOCircle;
     [SerializeField] protected LayerMask whatIsGround;
     [SerializeField] protected bool grounded;
-    //[Header("Attack Variables")]
+
+    [Header("Attack Variables")]
+    [SerializeField] protected int attackvalue;
+    [SerializeField] protected float attackrate;
     [Header("Character Stats")]
-    [SerializeField] protected int hp;
-    [SerializeField] protected float attackvalue;
+    public int hp =100;
+    
+
     protected Rigidbody2D rb;
     protected Animator myAnimator;
 
@@ -35,6 +39,7 @@ public abstract class Character : MonoBehaviour
     }
     public virtual void Update()
     {
+        
         grounded = Physics2D.OverlapCircle(groundcheck.position, radOCircle, whatIsGround);
         if (rb.velocity.y < 0)
         {
@@ -56,6 +61,7 @@ public abstract class Character : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
     protected abstract void HandleJumping();
+    protected abstract void HandleAttack();
     protected virtual void HandleMovement()
     {
         Move();
