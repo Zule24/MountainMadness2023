@@ -11,7 +11,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator myAnimator;
     private bool facingRight = true;
 
-    public float speed = 2.0f;
+    public float speed = 2.5f;
     public float horizMovement; //-1 or 0 or 1
 
     // Start is called before the first frame update
@@ -27,7 +27,7 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         //check if player has an input
-        horizMovement = Input.GetAxis("Horizontal");
+        horizMovement = Input.GetAxisRaw("Horizontal");
     }
     private void FixedUpdate()
     {
